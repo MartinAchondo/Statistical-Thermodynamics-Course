@@ -344,7 +344,6 @@ if __name__=='__main__':
     IdealGas.run_simulation(N_steps=4000, plot=False)
     IdealGas.postprocessing()
 
-    print(IdealGas.L_P)
 
  
 
