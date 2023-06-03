@@ -123,9 +123,9 @@ class Simulation():
         self.P = 0
         self.T = 0
 
-        self.kb = 1.380649*10**-23
+        self.kb = 0.1
         self.collision_number = 0
-        self.L_P = deque([0]*10)
+        self.L_P = deque([0]*100)
         self.L_T = deque([0]*10)
 
         self.L_residual = list()
@@ -182,7 +182,7 @@ class Simulation():
 
     def update_variables(self):
         N = self.N_particles
-        P = self.total_dp/(self.Particles.dt*self.Particles.L*N)
+        P = self.total_dp/(self.Particles.dt*4*self.Particles.L)
         T = (2/2)*(1/(N*self.kb))*self.E
 
         self.L_P.append(P)
@@ -340,8 +340,8 @@ if __name__=='__main__':
         'dt': 0.005
     }
 
-    IdealGas = Simulation(Particles, N=200, **parameters)
-    IdealGas.run_simulation(N_steps=4000, plot=False)
+    IdealGas = Simulation(Particles, N=300, **parameters)
+    IdealGas.run_simulation(N_steps=500, plot=False)
     IdealGas.postprocessing()
 
 
